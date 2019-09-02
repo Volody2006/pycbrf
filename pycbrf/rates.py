@@ -143,8 +143,8 @@ class ExchangeRates(object):
             url += '?date_req=%s' % on_date.strftime('%d/%m/%Y')
 
         LOG.debug('Getting exchange rates from %s ...', url)
-
-        response = requests.get(url, timeout=10)
+        CBRF_HEADERS = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:68.0) Gecko/20100101 Firefox/68.0'}
+        response = requests.get(url, headers=CBRF_HEADERS, timeout=10)
         data = response.content
 
         return data
